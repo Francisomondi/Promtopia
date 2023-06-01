@@ -1,7 +1,6 @@
+import Nav from '@components/Nav'
+import Provider from '@components/Provider'
 import '@styles/globals.css'
-
-
-
 
 export const metadata = {
   title: 'Promtopia',
@@ -15,6 +14,7 @@ export default function RootLayout({ children }) {
         <div className='main'>
         <div className='gradient'/>
         <main className='app'>
+        <Nav/>
           {children}
         </main>
         
