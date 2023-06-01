@@ -6,7 +6,7 @@ import { useState,useEffect } from 'react'
 
 const Nav = () => {
 
-    const isUserLoggedIn = false
+    const isUserLoggedIn = true
     const[Providers,setProviders]= useState(null)
 
     useEffect(()=>{
@@ -54,13 +54,14 @@ return (
                 <button 
                 type='button'
                 key={provider.name}
-                onClick={
-                    ()=>signIn(proider.id)
-                }></button>
+                onClick={()=>signIn(proider.id)}
+                className='black_btn'
+                >Sign In</button>
             ))}
             </div>
         )}
         </div>
+        {/**Mobile navigation */}
     </nav>
 )
 }
