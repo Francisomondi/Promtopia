@@ -1,5 +1,5 @@
 "use client"
-import {signIn, signOut, useSession,getproviders} from 'next-auth/react'
+import {signIn, signOut, useSession,getProviders} from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState,useEffect } from 'react'
@@ -11,12 +11,12 @@ const Nav = () => {
     const [toggleDropdown,setToggleDropdown]= useState(false)
 
     useEffect(()=>{
-        const setProviders = async()=>{
-        const response= await getproviders()
+        const setUpProviders = async()=>{
+        const response= await getProviders()
 
         setProviders(response)
         }
-    setProviders()
+    setUpProviders()
     },[])
 
 return (
@@ -56,7 +56,7 @@ return (
                 <button 
                 type='button'
                 key={provider.name}
-                onClick={()=>signIn(proider.id)}
+                onClick={()=>signIn(provider.id)}
                 className='black_btn'
                 >Sign In</button>
             ))}
@@ -73,9 +73,8 @@ return (
                 height={27}
                 alt='profile'
                 onClick={()=>
-                setToggleDropdown(prev => {
-                    return !prev
-                })}/>
+                setToggleDropdown(prev => !prev)}
+                />
 
                 {toggleDropdown && (
                     <div className='dropdown'>
@@ -93,7 +92,7 @@ return (
                         <button
                         type='button'
                         onClick={()=>{setToggleDropdown(false)}}
-                        className='mt-5 w-full black-btn'>
+                        className='mt-5 w-full black_btn'>
                         Sign Out</button>
                     </div>
                 )}
@@ -106,7 +105,7 @@ return (
                 <button 
                 type='button'
                 key={provider.name}
-                onClick={()=>signIn(proider.id)}
+                onClick={()=>signIn(provider.id)}
                 className='black_btn'
                 >Sign In</button>
             ))}
