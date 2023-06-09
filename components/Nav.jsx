@@ -46,7 +46,7 @@ return (
                 Sign Out
                 </button>
                 <Link href='/profile'>
-                <Image src='/assets/images/dummy.png'
+                <Image src={session?.user.image}
                 width={27}
                 height={27}
                 alt='profile'/>
@@ -65,11 +65,11 @@ return (
             </div>
         )}
         </div>
-
+        {/**mobile navigation */}
         <div className='sm:hidden flex relative'>
         {session ?.user ? (
             <div className='flex'>
-            <Image src='/assets/images/dummy.png'
+            <Image src={session?.user.image}
                 width={27}
                 height={27}
                 alt='profile'
