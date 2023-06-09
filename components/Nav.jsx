@@ -6,7 +6,8 @@ import { useState,useEffect } from 'react'
 
 const Nav = () => {
 
-    const isUserLoggedIn = true
+    const {data: session} = useSession()
+
     const[Providers,setProviders]= useState(null)
     const [toggleDropdown,setToggleDropdown]= useState(false)
 
@@ -30,9 +31,10 @@ return (
             className='object-contain'/>
             <p className='logo_text'>Promptopia</p>
         </Link>
+
         {/**Desktop navigation */}
         <div className='sm:flex hidden'>
-        {isUserLoggedIn ? (
+        {session?.user ? (
             <div className='flex gap3 md:gap-5'>
                 <Link href='/create-prompt'
                 className='black_btn'>
@@ -52,7 +54,7 @@ return (
             </div>
         ):(
             <div>
-            {Providers && Object.values(providers).map((provider)=>(
+            {Providers && Object.values(Providers).map((provider)=>(
                 <button 
                 type='button'
                 key={provider.name}
@@ -63,10 +65,9 @@ return (
             </div>
         )}
         </div>
-        {/**Mobile navigation */}
 
         <div className='sm:hidden flex relative'>
-        {isUserLoggedIn ? (
+        {session ?.user ? (
             <div className='flex'>
             <Image src='/assets/images/dummy.png'
                 width={27}
@@ -101,7 +102,7 @@ return (
             </div>
         ):(
             <div>
-            {Providers && Object.values(providers).map((provider)=>(
+            {Providers && Object.values(Providers).map((provider)=>(
                 <button 
                 type='button'
                 key={provider.name}
