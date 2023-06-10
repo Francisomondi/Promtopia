@@ -49,7 +49,8 @@ return (
                 <Image src={session?.user.image}
                 width={27}
                 height={27}
-                alt='profile'/>
+                alt='profile'
+                className='rounded-full'/>
                 </Link>
             </div>
         ):(
@@ -68,13 +69,14 @@ return (
         {/**mobile navigation */}
         <div className='sm:hidden flex relative'>
         {session ?.user ? (
-            <div className='flex'>
+            <div className='flex '>
             <Image src={session?.user.image}
                 width={27}
                 height={27}
                 alt='profile'
                 onClick={()=>
                 setToggleDropdown(prev => !prev)}
+                className='rounded-full'
                 />
 
                 {toggleDropdown && (
