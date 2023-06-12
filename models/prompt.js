@@ -15,6 +15,6 @@ const promptSchema = new Schema({
         required:[true,'Tag is required']
     }
 })
-const Prompt = models.prompt || model('Prompt', promptSchema)
+const Prompt = models.Prompt || model('Prompt', promptSchema)
 
 export default Prompt
