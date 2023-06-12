@@ -3,11 +3,13 @@ import {useState} from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Form from '@components/Form'
-import router from 'reactRouter'
+
 
 
 
 const CreatePrompt = () => {
+  const router = useRouter();
+  const {data:session} = useSession();
    const[submitting,setSUbmitting]= useState(false)
    const [post, setPost] = useState({
     prompt: '',
@@ -19,7 +21,7 @@ const CreatePrompt = () => {
     setSUbmitting(true)
 
     try {
-      const response = await fetch('api.prompt/new',{
+      const response = await fetch('api/prompt/new',{
         method: 'POST',
         body: JSON.stringify({
           prompt:post.prompt,
