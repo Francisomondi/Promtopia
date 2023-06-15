@@ -2,7 +2,7 @@
 import {useState,useEffect} from 'react'
 import {useSession} from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import Profile from '@components/Profile'
+import profile from '@components/Profile'
 
 const Profile = () => {
 
@@ -45,7 +45,7 @@ const Profile = () => {
     }
   return (
     <div>
-      <Profile 
+      <profile 
       name='My'
       desc='Welcome to my Personalized Profile page'
       data={posts}
