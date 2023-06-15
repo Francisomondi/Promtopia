@@ -2,9 +2,9 @@
 import {useState,useEffect} from 'react'
 import {useSession} from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import profile from '@components/Profile'
+import Profile from '@components/Profile'
 
-const Profile = () => {
+const profile = () => {
 
     const router = useRouter()
     const {data:session} = useSession()
@@ -34,7 +34,9 @@ const Profile = () => {
             await fetch(`/api/prompt/${post._id.toString()}`,{
               method: 'DELETE'
             })
-            const filteredPosts = posts.filter((p) => p._id !== post._id)
+            const filteredPosts = posts.filter((p) => {
+              return p._id !== post._id
+            })
 
             setPosts(filteredPosts)
           }
@@ -45,7 +47,7 @@ const Profile = () => {
     }
   return (
     <div>
-      <profile 
+      <Profile 
       name='My'
       desc='Welcome to my Personalized Profile page'
       data={posts}
@@ -55,4 +57,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default profile
